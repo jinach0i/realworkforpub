@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달 정리</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{background-color: lightcyan;}
+        #wrap{}
+        .modal{width: 100%; height: 100%; background: rgba(0, 0, 0, .2); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
+        .modal .popup{width: 400px; height: 400px; background-color: turquoise; position: relative; top: 25%; left: 25%; padding: 1%;}
+        .modal .popup h2{text-align: center; margin-bottom: 30px;}
+        .modal .popup p{}
+        .modal .popup button{border: none; position: absolute; left: 0; bottom: 0; width: 50%; height: 40px; background-color: gold; font-weight: bold;}
+        .modal .popup a{background-color: gold; font-weight: bold; position: absolute; bottom: 0; right: 0; width: 50%; height: 40px; line-height: 40px; text-align: center; border-left: 1px solid lightgrey;}
+        footer{}
+    </style>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+     -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        내용들
+        <button class="modalOn">Popup떠라</button>
+        <div class="modal">
+            <div class="popup">
+                <h2>Modal title</h2>
+                <p>Modal contents here</p>
+                <button>오늘 하루 보지 않기</button><a href="#none" class="close">닫기</a>
+            </div>
+        </div>
+        <footer id="footer">
+            <address>어쩌구도 어쩌구시 어쩌구구 어쩌구동</address>
+        </footer>
+    </div>
+    <script>
+        $(function () {
+
+            // function setCookie(name, value, expiredays) {
+            //     new Date().setDate(new Date().getDate()+expiredays);
+            //     document.cookie=name+'='+escape(value)+'; expires='+new Date().toUTCString();
+            // }
+            $('.modalOn').click(function () {
+                $('.modal').fadeIn();
+            })
+            $('.close').click(function () {
+                $('.modal').fadeOut();
+                
+            });
+        //     $('.poopup .close').click(function (e) {
+        //     e.preventDefault();
+        //     $('.close').modal('hide');
+        // });
+        })
+    </script>
+</body>
+</html>
