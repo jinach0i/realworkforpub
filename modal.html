@@ -7,15 +7,16 @@
     <title>모달 정리</title>
     <style>
         *{margin: 0; padding: 0; box-sizing: border-box;}
+        a{text-decoration: none;}
         body{background-color: lightcyan;}
         #wrap{}
         .modal{width: 100%; height: 100%; background: rgba(0, 0, 0, .2); position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
         .modal .popup{width: 400px; height: 400px; background-color: turquoise; position: relative; top: 25%; left: 25%; padding: 1%;}
         .modal .popup h2{text-align: center; margin-bottom: 30px;}
         .modal .popup p{}
-        .modal .popup button{border: none; position: absolute; left: 0; bottom: 0; width: 50%; height: 40px; background-color: gold; font-weight: bold;}
+        .modal .popup button{border: none; position: absolute; left: 0; bottom: 0; width: 50%; height: 40px; background-color: gold; font-weight: bold; cursor: pointer;}
         .modal .popup a{background-color: gold; font-weight: bold; position: absolute; bottom: 0; right: 0; width: 50%; height: 40px; line-height: 40px; text-align: center; border-left: 1px solid lightgrey;}
-        footer{}
+        .hidden{display: none;}
     </style>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -41,22 +42,55 @@
     <script>
         $(function () {
 
-            // function setCookie(name, value, expiredays) {
-            //     new Date().setDate(new Date().getDate()+expiredays);
-            //     document.cookie=name+'='+escape(value)+'; expires='+new Date().toUTCString();
-            // }
-            $('.modalOn').click(function () {
-                $('.modal').fadeIn();
-            })
-            $('.close').click(function () {
-                $('.modal').fadeOut();
-                
-            });
-        //     $('.poopup .close').click(function (e) {
-        //     e.preventDefault();
-        //     $('.close').modal('hide');
-        // });
+            
+           
+            //여닫기1:jQuery학원용:
+            // $('.modalOn').click(function () {
+            //     $('.modal').fadeIn(1500);
+            // })
+            // $('.close').click(function () {
+            //     $('.modal').fadeOut(1500);
+            // });
         })
+    </script>
+    <script>
+        //여닫기2:VanillaJS:
+        const open=()=>{
+            document.querySelector('.modal').classList.remove('hidden');
+        }
+        const close=()=>{
+            document.querySelector('.modal').classList.add('hidden');
+        }
+        document.querySelector('.modalOn').addEventListener('click',open);
+        document.querySelector('.close').addEventListener('click',close);
+        // 하루:
+        // getCookie로 이전에 cookie에 등록된 해당 값이 있는지 확인:
+        function getCookie(name) {
+            let cookieName=name+'=',
+            x=0;
+            while (x<=document.cookie.length) { //cookie가 없으면
+                let y=(x+cookieName.length);
+                if (document.cookie.substring(x,y)==cookieName) {
+                    if ((lastChrCookie=document.cookie.indexOf(";",y))==-1) {
+                        lastChrCookie=document.cookie.length;
+                        return decodeURI(document.cookie.substring(y,lastChrCookie));
+                    }
+                    x=document.cookie.indexOf('',x)+1;
+                    if (x==0) {
+                        break;
+                    }
+                    return "";
+                }
+            }
+        }
+        // cookie값을 24시간 후로 바꾸기:
+        // https://jintrue.tistory.com/entry/Javascript-%EC%98%A4%EB%8A%98-%ED%95%98%EB%A3%A8-%ED%8C%9D%EC%97%85-%EB%8B%AB%EA%B8%B0
+        function setCookie(cname, value, expiredays) {
+            let todayValue=new Date();
+            todayValue.setDate(todayValue.getDate()+expiredays);
+            document.cookie=cname+'='+encodeURI(value)+'; expiredays='+todayValue.toUTCString()+'; path=/;';
+        }
+        
     </script>
 </body>
 </html>

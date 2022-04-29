@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>점점 변하는 Gradients</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        .circle{width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(45deg,rgb(173 223 229),rgb(81 205 189),rgb(92 195 190),rgb(58 143 137));  transform: translate(25%, 25%); transition: .4s; animation: circleGradient 4s ease infinite; -moz-animation: circleGradient 4s ease; -webkit-animation: circleGradient 4s ease infinite; }
+        @-webkit-keyframes circleGradient {
+            from{background-position: 0% 50%;}
+            50%{background-position: 100% 50%;}
+            to{background-position: 0% 50%;}
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="circle"></div>
+    </div>
+</body>
+</html>
