@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All navs here</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        li{list-style: none; text-align: center; }
+        a{text-decoration: none; color: black;}
+        .clear-fix{clear: both;}
+        .hidden{position: absolute; left: -99999px;}
+        /* HEADER: */
+        header{width: 100%; height: 80px;}
+        header>.inner{width: 90%; height: 80px; margin: 0 auto;}
+        header>.inner h1{float: left; height: 60px; margin-top: 10px;}
+        header>.inner h1 a{display: block;}
+        header>.inner>ul{display: inline-block; float: right; width: 30%; height: 80px; line-height: 80px; padding-right: 100px;}
+        header>.inner>ul li{width: 33.3333%; float: left;}
+        header>.inner>ul li:hover a{}
+        header .menu{display: inline-block; float: right;}
+        header .menu>a{cursor: pointer; width: 30px; height: 30px; display: block; position: absolute; top: 20px; right: 5%;}
+        header .menu>a span:first-child{width: 30px; height: 2px; background-color: black; position: absolute; top: 8px; }
+        header .menu>a span:nth-child(2){width: 18px; height: 2px; background-color: black; position: absolute; top: 16px; right: 0; }
+        header .menu>a span:last-child{width: 22px; height: 2px; background-color: black; position: absolute; top: 24px; right: 0;}
+        #header .open span:first-child{display: none;}
+        #header .open span:nth-child(2){transform: rotate(45deg); width: 22px; top: 20px;}
+        #header .open span:last-child{transform: rotate(-45deg); top: 20px;}
+        #header .open+.gnb{display: block;}
+
+        header .menu .gnb{width: 100%; height: 40vh; position: absolute; top: 80px; left: 0; right: 0; border-top: 1px ridge black;  border-bottom: 1px ridge black; display: none;}
+        header .menu .gnb .depth1{height: 8vh; line-height: 8vh; width: 100%; padding: 0 5%; border-bottom: 1px ridge green;}
+        header .menu .gnb .depth1 li{float: left; width: calc(100%/6); text-align: left;}
+        header .menu .gnb .depth1 li a{display: block; padding-left: 30%; font-weight: bold; font-size: 20px;}
+        header .menu .gnb .inner{width: 90%; height: 25vh; margin: 0 auto;}
+        header .menu .gnb .inner>ul{}
+        header .menu .gnb .inner>ul>li{float: left; width: calc(100%/6); text-align: left;}
+        header .menu .gnb .inner>ul>li.depth2-title>a{font-weight: bold;}
+        header .menu .gnb .inner>ul>li.depth2-title>ul li{text-align: left;}
+        header .menu .gnb .inner>ul>li>a{}
+        header .menu .gnb .inner>ul>li>ul li a i{}
+        header .menu .gnb .inner>ul>li>ul li a i:focus{transform: rotate(180deg);}
+        header .menu .gnb .pointUp{transform: rotate(180deg) translateY(-4px);}
+        header .menu .gnb .menu-bottom{height: 7vh; line-height: 7vh; border-top: 1px solid black;}
+        header .menu .gnb .menu-bottom p{text-align: center;}
+        
+    </style>
+    <script src="https://kit.fontawesome.com/63e5a82675.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="inner">
+                <h1><a href="./navs.html" title="홈으로 이동"><img src="https://picsum.photos/150/60?random=1" alt="로고"></a></h1>
+                <ul>
+                    <li><a href="#">LNB1</a></li>
+                    <li><a href="#">LNB2</a></li>
+                    <li><a href="#">LNB3</a></li>
+                </ul>
+                <div class="menu">
+                    <a href="javascript:" class="menu-btn" title="메뉴"><span></span><span></span><span></span></a>
+                    <div class="gnb">
+                        <h2 class="hidden">메뉴</h2>
+                        <ul class="depth1">
+                            <li><a href="#">뎁스1</a></li>
+                            <li><a href="#">뎁스1</a></li>
+                            <li><a href="#">뎁스1</a></li>
+                            <li><a href="#">뎁스1</a></li>
+                            <li><a href="#">뎁스1</a></li>
+                            <li><a href="#">뎁스1</a></li>
+                        </ul>
+                        <div class="inner">
+                            <ul>
+                                <li class="depth2-title">
+                                    <a href="#">뎁스2 제목</a>
+                                    <ul>
+                                        <li><a href="#">뎁스2들</a></li>
+                                        <li><a href="#">뎁스2들</a></li>
+                                        <li><a href="#">뎁스2들<i class="fa-solid fa-sort-down"></i></a></li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu-bottom">
+                            <p>이곳에 광고 넣으셈</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+    </div>
+    <script>
+        // HEADER-menu-btn:
+        const menuBtn=()=>{
+            const menuBtn=document.querySelector('.menu-btn');
+            menuBtn.addEventListener('click', function () {
+                menuBtn.classList.toggle('open');
+            });
+        }
+        menuBtn();
+        const menuArrow=()=>{
+            const menuArrow=document.querySelector('.depth2-title i');
+            menuArrow.addEventListener('click', function (e) {
+                menuArrow.classList.toggle('pointUp');
+            });
+        }
+        menuArrow();
+
+    </script>
+</body>
+</html>
