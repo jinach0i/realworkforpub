@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUD 효과</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{background-color: #111;}
+        /* 이미지 들어있는 애들을 담고 있는 최고조상-배경 깔고+위치 가운데 조정: */
+        .hudbox{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 922px; height: 504px; background: url('./img/background.png') no-repeat center center/100%;}
+        /* 이미지 들고 있는 애들 직속부모의 부모-위치 가운데 조정: */
+        .hudbox .screen{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 700px;}
+        /* 이미지의 직속 부모 한테 앞으로 줄 효과의 시간을 1s로 약간 천천히: */
+        .hudbox .screen [class*="hud"]{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; transition: 1s;}
+        /* 이미지 직속 부모에 hover하면 투명도1로 나타남: */
+        .hudbox .screen:hover [class*="hud"]{opacity: 1;}
+        .hudbox .screen [class*="hud"] img{max-width: 100%;}
+        .hudbox .screen .hud01{animation: firstRolling 5s linear infinite; width: 80%;}
+        .hudbox .screen .hud02{animation: secRolling 10s infinite alternate;}
+        .hudbox .screen .hud03{animation: rollandScale 4s infinite;}
+        .hudbox .screen .hud05{animation: secRolling 6s infinite alternate;}
+        .hudbox .screen .hud06{top: 22%;}
+        @keyframes firstRolling {
+            from{transform: translate(-50%,-50%) rotate(0);}
+            to{transform: translate(-50%,-50%) rotate(360deg);}
+        }
+        @keyframes secRolling {
+            from{transform: translate(-50%,-50%) rotate(0);}
+            30%{transform: translate(-50%,-50%) rotate(200deg);}
+            to{transform: translate(-50%,-50%) rotate(360deg);}
+        }
+        @keyframes rollandScale {
+            from{transform: translate(-50%,-50%) rotate(0) scale(1);}
+            35%{transform: translate(-50%,-50%) rotate(360deg) scale(1);}
+            40%{transform: translate(-50%,-50%) rotate(360deg) scale(.5);}
+            60%{transform: translate(-50%,-50%) rotate(400deg) scale(.5);}
+            65%{transform: translate(-50%,-50%) rotate(0) scale(1);}
+            100%{transform: translate(-50%,-50%) rotate(360deg) scale(1);}
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="hudbox">
+            <div class="screen">
+                <div class="hud01"><img src="./img/hover01.png" alt="장치1"></div>
+                <div class="hud02"><img src="./img/hover02.png" alt="장치2"></div>
+                <div class="hud03"><img src="./img/hover03.png" alt="장치3"></div>
+                <div class="hud04"><img src="./img/hover04.png" alt="장치4"></div>
+                <div class="hud05"><img src="./img/hover05.png" alt="장치5"></div>
+                <div class="hud06"><img src="./img/background-deco01.png" alt="장치bg"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
